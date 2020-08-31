@@ -1,5 +1,6 @@
 # AntiSpam
 原作者为[元路](https://www.mcbbs.net/home.php?mod=space&uid=670070)(膜拜大佬)，该插件为[yuanluAntiSpam](https://www.mcbbs.net/thread-903631-1-1.html)的Nukkit实现版，以下内容为原帖介绍
+**下载在[Release](https://github.com/Isla4ever/AntiSpam/releases)里**
 
 ## 介绍
 
