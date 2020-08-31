@@ -3,4 +3,5 @@
 *.iws
 log/
 target/
+lib/
 dependency-reduced-pom.xml

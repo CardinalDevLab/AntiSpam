@@ -1,0 +1,6 @@
+name: yuanluAntiSpam
+main: app.Isla4ever.Main
+version: 1.2.1
+api: ["1.0.8"]
+description: yuanluAntiSpam
+author: yuanlu, Isla4ever

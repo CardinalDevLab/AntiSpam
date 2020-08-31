@@ -1,0 +1,144 @@
+Prefix: '&b[元路反刷屏]&r'
+message:
+  LanguageFileIsLost: '&c&l[语言文件缺失]节点:%node%'
+  not-player: "&c您不是玩家!"
+  no-permission: "&c您没有权限"
+  less-than-min-entropy: "&c您的话好像信息量不高呢"
+  less-than-min-average-entropy: "&c您的话好像平均信息量不高呢"
+  less-than-min-distance: "&c您最近几句话好像很接近呢"
+  more-than-max-similarity: "&c您最近几句话好像很相似呢"
+  tab:
+    set:
+      st: "<similar-time>"
+      smd: "<similar-min-distance>"
+      sms: "<similar-max-similarity>"
+      sca: "<similar-check-amount>"
+      me: "<min-entropy>"
+      mae: "<min-average-entropy>"
+      ml: "<min-length>"
+      two-type:
+        - '<data>...'
+        - '<name>...'
+  cmd:
+    test:
+      help:
+        - '&e测试某段话的信息熵/平均信息熵等信息'
+        - '&e您可以使用#分割几句话,用以测试相似度'
+      muti: "&e%s1%&b和&e%s2%&b相似度&6%s%&b, 转换距离&6%d%"
+      simple:
+        - '&b测试语句: &e%s%'
+        - '&b总信息熵&6%e%&b, 平均信息熵&6%ae%'
+    reload:
+      successful: "&a成功重载配置文件"
+    set:
+      not-number: "&c您输入了无效数字"
+      successful: "&a成功设置, 名称: &d%key%"
+      help:
+        - '&e/yantispam set <player>'
+        - '    &7清除某玩家设置'
+        - '&e/yantispam set <player> <data>'
+        - '    &7为某玩家设置自定义配置'
+        - '&e/yantispam set <player> [name]'
+        - '    &7设置某玩家配置为某指定配置'
+        - '    &7data:'
+        - '    &7minLength&b判断最短长度'
+        - '    &7minAverageEntropy&b最小平均信息熵'
+        - '    &7minEntropy&b最小信息熵'
+        - '    &7checkAmount&b相似检查数量'
+        - '    &7maxSimilarity&b最大相似度'
+        - '    &7minDistance&b最小变换次数'
+        - '    &7time&b近期消息缓存时间(毫秒)'
+    help:
+      - '&e/yantispam set <player>'
+      - '    &7清除某玩家设置'
+      - '&e/yantispam set <player> [name]'
+      - '    &7设置某玩家配置为某指定配置'
+      - '&e/yantispam set <player> <data>'
+      - '    &7为某玩家设置自定义配置'
+      - '&e/yantispam reload'
+      - '    &7重载配置文件&数据文件'
+      - '&e/yantispam test ...'
+      - '    &7对某段话进行信息熵/相似度等信息测试,可用"#"分割'
+
+#数据
+#反刷屏参数
+#您可以设置为-1来禁用某个参数,
+data:
+  #基础值
+  base:
+    #最小检测长度
+    #建议不要低于5
+    #过低的长度可能会导致数值偏离过大
+    #例如仅1个字符,其整体信息熵为0,平均信息熵为NaN
+    min-length: 5
+    #最小的平均字符信息熵
+    min-average-entropy: 0.25
+    #最小的整体信息熵
+    #不建议使用此项
+    #无参考性
+    min-entropy: -1
+    #相似度数据
+    similarity:
+      #近期消息缓存时间(毫秒)
+      #超过此时间的信息将不计入相似度计算
+      time: 60000
+      #比较的信息数量
+      checkAmount: 5
+      #最大相似度 [0.0,1.0]
+      max-similarity: 0.8
+      #最小比较的字符串距离
+      #不建议使用此项
+      #无参考性
+      min-distance: -1
+  #在黑名单上(重点关照对象)的用户数据值
+  black-list:
+    #最小检测长度
+    #建议不要低于5
+    #过低的长度可能会导致数值偏离过大
+    #例如仅1个字符,其整体信息熵为0,平均信息熵为NaN
+    min-length: 5
+    #最小的平均字符信息熵
+    min-average-entropy: 0.3
+    #最小的整体信息熵
+    #不建议使用此项
+    #无参考性
+    min-entropy: -1
+    #相似度数据
+    similarity:
+      #近期消息缓存时间(毫秒)
+      #超过此时间的信息将不计入相似度计算
+      time: 600000
+      #比较的信息数量
+      checkAmount: 6
+      #最大相似度 [0.0,1.0]
+      max-similarity: 0.6
+      #最小比较的字符串距离
+      #不建议使用此项
+      #无参考性
+      min-distance: -1
+  #在黑名单上(重点关照对象)的用户数据值
+  white-list:
+    #最小检测长度
+    #建议不要低于5
+    #过低的长度可能会导致数值偏离过大
+    #例如仅1个字符,其整体信息熵为0,平均信息熵为NaN
+    min-length: 5
+    #最小的平均字符信息熵
+    min-average-entropy: -1
+    #最小的整体信息熵
+    #不建议使用此项
+    #无参考性
+    min-entropy: -1
+    #相似度数据
+    similarity:
+      #近期消息缓存时间(毫秒)
+      #超过此时间的信息将不计入相似度计算
+      time: 20000
+      #比较的信息数量
+      checkAmount: 2
+      #最大相似度 [0.0,1.0]
+      max-similarity: 0.9
+      #最小比较的字符串距离
+      #不建议使用此项
+      #无参考性
+      min-distance: -1
